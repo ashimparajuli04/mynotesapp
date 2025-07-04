@@ -1,0 +1,142 @@
+@page
+@model notes.Pages.Notes.DetailsModel
+@{
+    ViewData["Title"] = "Note Details";
+}
+
+<link rel="stylesheet" href="~/css/details.css" />
+
+<div class="notes-container">
+    <div class="notes-header">
+        <h1 class="notes-title">Note Details</h1>
+        <div class="header-actions">
+            <a asp-page="./Edit" asp-route-id="@Model.Note.Id" class="btn-new-note" style="background: #007aff;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                </svg>
+                Edit Note
+            </a>
+            <a asp-page="./Index" class="btn-new-note" style="background: #8e8e93;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Notes
+            </a>
+        </div>
+    </div>
+
+    <div class="details-container">
+        <div class="note-card" style="max-width: 800px; margin: 0 auto;">
+            <div class="note-details">
+                <div class="detail-field">
+                    <label class="detail-label">Title</label>
+                    <div class="detail-content title-content">@Html.DisplayFor(model => model.Note.Title)</div>
+                </div>
+                <div class="detail-field">
+                    <label class="detail-label">Content</label>
+                    <div class="detail-content content-area">@Html.DisplayFor(model => model.Note.Content)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.details-container {
+    margin-top: 24px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.note-details {
+    padding: 0;
+}
+
+.detail-field {
+    margin-bottom: 32px;
+}
+
+.detail-field:last-child {
+    margin-bottom: 0;
+}
+
+.detail-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #86868b;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-content {
+    font-size: 16px;
+    color: #1d1d1f;
+    line-height: 1.4;
+    background: #f5f5f7;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #e5e5e7;
+    min-height: 44px;
+}
+
+.title-content {
+    font-weight: 600;
+    font-size: 20px;
+    background: white;
+    border: 1px solid #e5e5e7;
+}
+
+.content-area {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    min-height: 120px;
+    background: white;
+    border: 1px solid #e5e5e7;
+}
+
+@@media (max-width: 768px) {
+    .notes-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+    
+    .header-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-new-note {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .notes-title {
+        font-size: 36px;
+    }
+    
+    .detail-content {
+        padding: 12px;
+    }
+    
+    .title-content {
+        font-size: 18px;
+    }
+}
+
+@@media (max-width: 480px) {
+    .header-actions {
+        gap: 8px;
+    }
+    
+    .notes-title {
+        font-size: 28px;
+    }
+}
+</style>
